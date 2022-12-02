@@ -32,19 +32,20 @@ const grayScaleWhenDead = computed(() =>
 </script>
 
 <template>
-  <div class="flex m-3 bg-gray-300 rounded-xl">
-    <NuxtLink :to="`/characters/${id}`">
+  <NuxtLink :to="`/characters/${id}`">
+    <div
+      class="aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-w-7 xl:aspect-h-8"
+    >
       <NuxtImg
         :src="image"
-        class="rounded-xl object-cover"
+        :alt="name"
+        class="h-full w-full"
         :modifiers="grayScaleWhenDead"
       />
-      <div class="m-3">
-        <h2 class="text-xl mb-3">{{ name }}</h2>
-        <p>Status: {{ status }}</p>
-        <p>Species: {{ species }}</p>
-        <p>Location: {{ location }}</p>
-      </div>
-    </NuxtLink>
-  </div>
+    </div>
+    <h3 class="text-sm text-gray-700">{{ name }}</h3>
+    <p class="mt-1 text-sm text-gray-500">Status: {{ status }}</p>
+    <p class="mt-1 text-sm text-gray-500">Species: {{ species }}</p>
+    <p class="mt-1 text-sm text-gray-500">Location: {{ location }}</p>
+  </NuxtLink>
 </template>
